@@ -1,0 +1,31 @@
+version: '1.1'
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+  backend:
+    build: backend/
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+    env_file: .env
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    restart: on-failure
+  frontend:
+    build: frontend/
+    ports:
+      - "3000:3000"
+    volumes: 
+      - ./frontend/src:/frontend/src
+    command: npm run dev
+    depends_on:
+      - backend
