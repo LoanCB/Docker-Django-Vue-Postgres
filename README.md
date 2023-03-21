@@ -29,3 +29,10 @@ Create super use
 ```shell
 docker compose run backend sh -c "python manage.py createsuperuser"
 ```
+
+## Vue commands
+
+Install dependencies
+```shell
+docker compose run frontend sh -c "npm install"
+```
