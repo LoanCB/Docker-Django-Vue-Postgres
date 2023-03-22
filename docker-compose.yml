@@ -26,6 +26,8 @@ services:
       - "3000:3000"
     volumes: 
       - ./frontend/src:/frontend/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     command: npm run dev
     depends_on:
       - backend
