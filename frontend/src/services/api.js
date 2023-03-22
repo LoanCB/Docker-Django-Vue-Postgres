@@ -10,6 +10,6 @@ export const api = {
     logout: () => {
         localStorage.removeItem('access_token')
         localStorage.removeItem('refresh_token')
-        router.push({name: 'login', query: {next: ''}})
+        router.push({name: 'login'})
     }
 }
