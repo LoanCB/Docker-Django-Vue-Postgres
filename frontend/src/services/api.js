@@ -1,8 +1,8 @@
 import router from "@/router"
-import axios from "axios"
+import Axios from "./caller";
 
 export const api = {
-    login: credentials => axios.post('api/token/', credentials),
+    login: credentials => Axios.post('api/token/', credentials),
     saveToken: (access, refresh) => {
         localStorage.setItem('access_token', access)
         localStorage.setItem('refresh_token', refresh)
