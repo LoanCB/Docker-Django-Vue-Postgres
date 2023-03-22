@@ -28,4 +28,12 @@ const router = createRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+    if (to.matched[0].name === 'private')
+        // Redirect to login page when access token doesn't exist in local storage
+        if (!localStorage.getItem('access_token'))
+            router.push({name: 'login', query: {next: to.path}})
+    next()
+})
+
 export default router
