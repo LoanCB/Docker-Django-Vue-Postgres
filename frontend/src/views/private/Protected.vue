@@ -2,8 +2,8 @@
   <main>
     <h1>Protected view</h1>
     <p v-if="error" class="error">{{error}}</p>
-    <p v-if="loading">Loading...</p>
-    <p v-else>{{protectedData.message}}</p>
+    <p v-if="protectedData">{{protectedData.message}}</p>
+    <p v-else>Loading...</p>
   </main>
 </template>
 
@@ -13,16 +13,12 @@ export default {
   data() {
     return {
       protectedData: null,
-      error: null,
-      loading: true
+      error: null
     }
   },
   mounted() {
     this.$api.protected()
-        .then(response => {
-          this.loading = false
-          this.protectedData = response.data
-        })
+        .then(response => this.protectedData = response.data)
         .catch(e => this.error = e)
   }
 }
