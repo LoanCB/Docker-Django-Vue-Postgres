@@ -9,7 +9,8 @@ const routes = [
         name: 'private',
         component: Private.PrivateLayout,
         children: [
-            {path: 'home', name: 'home', component: Private.Home, alias: '/'}
+            {path: 'home', name: 'home', component: Private.Home, alias: '/'},
+            {path: 'protected', name: 'protected', component: Private.Protected},
         ]
     },
     {
