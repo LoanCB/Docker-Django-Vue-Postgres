@@ -7,10 +7,14 @@ export const api = {
         localStorage.setItem('access_token', access)
         localStorage.setItem('refresh_token', refresh)
     },
-    logout: () => {
+    logout: (redirect = true) => {
         localStorage.removeItem('access_token')
         localStorage.removeItem('refresh_token')
-        router.push({name: 'login'})
+        if (redirect) {
+            router.push({name: 'login', query: {next: window.location.pathname}})
+        } else {
+            router.push({name: 'login'})
+        }
     },
     protected: () => Axios.get('protected/')
 }

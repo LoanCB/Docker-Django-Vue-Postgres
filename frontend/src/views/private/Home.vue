@@ -1,14 +1,21 @@
 <template>
   <main>
     <h1>Home</h1>
-    <button @click="$api.logout">Logout</button>
+    <button @click="$api.logout(false)">Logout</button>
     <router-link :to="{name: 'protected'}">Protected view</router-link>
   </main>
 </template>
 
 <script>
+import {api as $api} from "@/services/api";
+
 export default {
-  name: "Home"
+  name: "Home",
+  computed: {
+    $api() {
+      return $api
+    }
+  }
 }
 </script>
 
