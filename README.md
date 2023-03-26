@@ -11,9 +11,9 @@ A minimal, working template using Django, Vue and Postgres inside a Docker compo
 All docker images using an [alpine](https://alpinelinux.org/about/) version
 
 ## Run project
-1. Launch docker
-
-2. Open terminal and run command
+1. create a .env file on project root and add SECRET_KEY variable (for django settings)
+2. Launch docker
+3. Open terminal and run command
 ```shell
 docker compose up
 ```
