@@ -1,38 +1,30 @@
-# Lyth Project
+# Docker Django Vue Postgres Minimal template
+A minimal, working template using Django, Vue and Postgres inside a Docker compose
 
-- Frontend : VueJS on [localhost:3000](http://localhost:3000)
-- Backend : Django 4.1 & DRF on [localhost:8000](http://localhost:8000)
-- Database : Postgres on port 5432
-- Virtualization : docker
+## Technologies
+1. [Docker](https://docs.docker.com/engine/install/) & docker compose
+2. [Django 4](https://www.djangoproject.com/) & [Django rest framework](https://www.django-rest-framework.org/)
+3. [Vue 3](https://vuejs.org/) (option mode)
+4. [Vite](https://vitejs.dev/)
+5. [Postgres 15](https://www.postgresql.org/)
+
+All docker images using an [alpine](https://alpinelinux.org/about/) version
 
 ## Run project
+1. Launch docker
 
+2. Open terminal and run command
 ```shell
 docker compose up
 ```
-You can add any options :
-- ```--build ``` to build project
-- ```-d``` to run it in background
 
-## Django commands
-Create migration
+3. Go to application
+  - Frontend at [localhost:3000](http://localhost:3000)
+  - Backend at [localhost:8000](http://localhost:8000)
+  - Django [administration](http://localhost:8000/admin)
+
+## Run django command
+For using a manage.py command, need to run it inside docker
 ```shell
-docker compose run backend sh -c "python manage.py createmigration"
-```
-
-Migrate your database
-```shell
-docker compose run backend sh -c "python manage.py migrate" 
-```
-
-Create super use
-```shell
-docker compose run backend sh -c "python manage.py createsuperuser"
-```
-
-## Vue commands
-
-Install dependencies
-```shell
-docker compose run frontend sh -c "npm install"
+docker compose run backend sh -c "python manage.py foo"
 ```
